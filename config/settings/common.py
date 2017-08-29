@@ -67,22 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'zachperkitny',
-        'USER': 'zach',
-        'PASSWORD': 'vagrant',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -107,7 +91,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'US/Pacific'
+TIME_ZONE = 'US/East'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True

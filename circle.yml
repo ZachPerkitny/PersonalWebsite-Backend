@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - pip install awsebcli
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - eb use zachperkitny-prod --profile default
+      - eb deploy --profile default

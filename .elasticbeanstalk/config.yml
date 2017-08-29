@@ -1,6 +1,10 @@
 branch-defaults:
   master:
     environment: zachperkitny-prod
+environment-defaults:
+  zachperkitny-prod:
+    branch: null
+    repository: null
 global:
   application_name: zachperkitny
   branch: null

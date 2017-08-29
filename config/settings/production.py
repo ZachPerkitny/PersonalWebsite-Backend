@@ -2,7 +2,7 @@ from .common import *
 import os
 
 SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = False
+DEBUG = True
 ADMIN_ENABLED = False
 CORS_ORIGIN_WHITELIST = (
     'zachperkitny.com',

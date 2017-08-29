@@ -1,6 +1,11 @@
+#circleci configuration
 dependencies:
   pre:
     - pip install awsebcli
+
+test:
+  override:
+    - "true"
 
 deployment:
   production:

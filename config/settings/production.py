@@ -2,7 +2,7 @@ from .common import *
 import os
 
 SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = True
+DEBUG = False
 ADMIN_ENABLED = False
 CORS_ORIGIN_WHITELIST = (
     'zachperkitny.com',
@@ -16,4 +16,9 @@ DATABASES = {
         'HOST': os.environ['RDS_HOSTNAME'],
         'PORT': os.environ['RDS_PORT']
     }
+}
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }

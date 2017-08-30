@@ -15,11 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.conf import settings
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.posts.urls'))
 ]
-
-if settings.ADMIN_ENABLED:
-    urlpatterns += (url(r'^admin/', admin.site.urls),)

@@ -2,12 +2,24 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class Tag(models.Model):
+    word = models.CharField(max_length=36, unique=True)
+
+    def __str__(self):
+        return self.word
+
+    class Meta:
+        verbose_name_plural = 'Tags'
+        ordering = ('word',)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField()
     summary = models.TextField(max_length=512)
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(editable=False, unique=True)
+    tags = models.ManyToManyField(Tag, related_name="tags", blank=True)
 
     def save(self, *args, **kwargs):
         if not self.id:

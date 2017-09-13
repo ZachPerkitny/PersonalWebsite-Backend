@@ -4,8 +4,8 @@ import os
 ALLOWED_HOSTS = ['.zachperkitny.com']
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
-CORS_ORIGIN_WHITELIST = (
-    'zachperkitny.com',
+CORS_ORIGIN_REGEX_WHITELIST = (
+    r'^(http?://)?(\w+\.)?zachperkitny\.com$',
 )
 DATABASES = {
     'default': {

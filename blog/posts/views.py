@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, \
+    CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Post
 from .pagination import TotalPagesPagination
@@ -15,6 +16,19 @@ class PostListView(ListCreateAPIView):
     serializer_class = PostListSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = TotalPagesPagination
+
+
+class PostDetailByTagView(ListAPIView):
+    """
+    Gets all posts with some tag
+    """
+
+    serializer_class = PostListSerializer
+    pagination_class = TotalPagesPagination
+
+    def get_queryset(self):
+        tag = self.kwargs['tag']
+        return Post.objects.filter(tags__word__iexact=tag)
 
 
 class PostDetailView(RetrieveUpdateDestroyAPIView):

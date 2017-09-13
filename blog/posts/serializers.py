@@ -13,7 +13,7 @@ class TagListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = '__all__'
+        fields = ('slug', 'word',)
 
 
 class PostListSerializer(serializers.ModelSerializer):

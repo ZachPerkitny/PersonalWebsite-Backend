@@ -20,12 +20,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(
-            migrate_data_forward,
-        ),
         migrations.AlterField(
             model_name='tag',
             name='slug',
-            field=models.SlugField(editable=False, unique=True),
+            field=models.SlugField(default='', editable=False, unique=True),
+            preserve_default=False
+        ),
+        migrations.RunPython(
+            migrate_data_forward,
         ),
     ]

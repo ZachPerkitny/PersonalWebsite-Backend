@@ -3,6 +3,14 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+from django.template.defaultfilters import slugify
+from blog.posts.models import Tag
+
+
+def migrate_data_forward(apps, schema_editor):
+    for instance in Tag.objects.all():
+        instance.tag = slugify(instance.word)
+        instance.save()
 
 
 class Migration(migrations.Migration):
@@ -12,6 +20,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(
+            migrate_data_forward,
+        ),
         migrations.AlterField(
             model_name='tag',
             name='slug',

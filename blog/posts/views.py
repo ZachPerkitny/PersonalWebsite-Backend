@@ -28,7 +28,7 @@ class PostDetailByTagView(ListAPIView):
 
     def get_queryset(self):
         tag = self.kwargs['tag']
-        return Post.objects.filter(tags__word__iexact=tag)
+        return Post.objects.filter(tags__slug=tag)
 
 
 class PostDetailView(RetrieveUpdateDestroyAPIView):

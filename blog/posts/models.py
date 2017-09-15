@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from django.template.defaultfilters import slugify
 
 
@@ -23,7 +24,7 @@ class Post(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField()
     summary = models.TextField(max_length=512)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(default=now)
     slug = models.SlugField(editable=False, unique=True)
     tags = models.ManyToManyField(
         Tag,
